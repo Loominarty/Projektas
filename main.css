@@ -1,6 +1,6 @@
 body{
     margin:0;
-    background-image: url(/pics/circuit.jpg);
+    background-image: url(./pics/circuit.jpg);
 }
 .navbar-expand-lg{
 background-color: #2c2c2c;
