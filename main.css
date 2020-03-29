@@ -1,0 +1,68 @@
+body{
+    margin:0;
+    background-image: url(pics/circuit.jpg);
+}
+.navbar-expand-lg{
+background-color: #2c2c2c;
+padding:0px;
+
+box-sizing: border-box;
+
+}
+.nav-elements{
+font-size: 0;
+padding:0;
+}
+.nav-link{
+  vertical-align: middle;  
+list-style: none;
+display: inline-block;
+
+font-family: 'Roboto Condensed', sans-serif;
+font-size: 20px;
+margin:0px 34px 0px 34px;
+padding-bottom:3px;
+}
+.nav-link:last-child{
+    margin-right:0;
+}
+.nav-link:after{
+    content: '';
+  display: block;
+  margin: auto;
+  height: 3px;
+  width: 0px;
+  background: transparent;
+  transition: width .5s ease, background-color .5s ease;
+}
+.nav-elements .nav-logo{
+     margin-right:50px;
+list-style: none;
+display: inline-block;
+padding: 12px 32px 32px 32px;
+vertical-align: middle;
+
+
+}
+.navbar-brand{
+    background-color:transparent;
+    color:transparent;
+
+}
+.img-fluid{
+    width: 50px;
+    height: 50px;
+   padding:0px;
+}
+a{
+    color:white;
+    text-decoration: none; 
+}
+a:visited {
+    text-decoration: none; 
+    
+  }
+  .nav-link:hover:after{
+    width: 100%;
+    background:white;
+  }
