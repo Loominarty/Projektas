@@ -1,45 +1,66 @@
+
 body{
     margin:0;
-    background-image: url(./pics/circuit.jpg);
+    height:100%;
+    
+}
+#bg{
+  position: fixed; 
+  top: -50%; 
+  left: -50%; 
+  width: 200%; 
+  height: 200%;
+  transition:top 20s;
+}
+
+#bg img{
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  right: 0; 
+  bottom: 0; 
+  margin: auto; 
+  min-width: 50%;
+  min-height: 50%;
 }
 .navbar-expand-lg{
+  
 background-color: #2c2c2c;
-padding:0px;
-
+padding:0px 0px 10px 0px;
+margin-top:0px;
 box-sizing: border-box;
 
 }
-.nav-elements{
-font-size: 0;
-padding:0;
-}
-.nav-link{
+
+
+
+
+.navbar-item{
   vertical-align: middle;  
 list-style: none;
 display: inline-block;
-
 font-family: 'Roboto Condensed', sans-serif;
 font-size: 20px;
-margin:0px 34px 0px 34px;
-padding-bottom:3px;
+margin:15px 40px 0px 40px;
+padding-bottom:0px;
+text-decoration: none;
 }
-.nav-link:last-child{
-    margin-right:0;
-}
-.nav-link:after{
+
+.navbar-item:after{
     content: '';
   display: block;
   margin: auto;
   height: 3px;
   width: 0px;
   background: transparent;
-  transition: width .5s ease, background-color .5s ease;
+  transition: width 1s ease, background-color 1s ease;
+  text-decoration: none;
 }
-.nav-elements .nav-logo{
-     margin-right:50px;
+.navbar-nav .mr-auto{
+   
 list-style: none;
 display: inline-block;
-padding: 12px 32px 32px 32px;
+
 vertical-align: middle;
 
 
@@ -53,6 +74,13 @@ vertical-align: middle;
     width: 50px;
     height: 50px;
    padding:0px;
+   transition: width .5s, height 0.5s;
+}
+.img-fluid:hover{
+  width: 60px;
+  height: 60px;
+  
+  
 }
 a{
     color:white;
@@ -62,7 +90,30 @@ a:visited {
     text-decoration: none; 
     
   }
-  .nav-link:hover:after{
+  .navbar-item:hover:after{
     width: 100%;
     background:white;
+    text-decoration-style: none;
+  }
+  a:hover{
+    text-decoration: none;
+    color:white;
+  }
+  
+  nav{
+    padding:0px;
+  }
+  .collapse,.navbar-collapse{
+    text-align:center;
+    
+    transition:height 1s;
+    
+  }
+  .navbar-collapse:active{
+    height:100%;
+  
+    
+  }
+  .navbar-toggler{
+display:inline-block;
   }
