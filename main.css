@@ -9,7 +9,7 @@ margin:0;
 body{
   margin:0;
   height:100%;
-  background: url("/pics/circuits.jpg");
+  background: url("./pics/circuits.jpg");
   background-size:100% 80%;
    background-repeat: no-repeat;
     background-position: top;
