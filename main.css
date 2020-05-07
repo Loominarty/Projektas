@@ -1,36 +1,92 @@
 html{
 margin:0;
     height:100%;
-    
-
+    scroll-behavior: smooth;
+padding:0;
 
 }
+
 
 body{
-  margin:0;
+    height:100%;
+    margin:0;
+    padding:0;
+  
+}
+.backgroundimg{
+  background: linear-gradient(rgba(26, 26, 26, 0.8), rgba(26, 26, 26, 0.8)), url(./pics/technical.jpg);
+  background-size:cover;
+  background-position:center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   height:100%;
-  background: url("./pics/circuits.jpg");
-  background-size:100% 80%;
-   background-repeat: no-repeat;
-    background-position: top;
-    background-attachment: scroll;
+  width:100%;
+}
+#front-page-txt{
+  position: relative;
+  top:30%;
 }
 
-
-
+.fa-chevron-down{
+  color:white;
+  position:absolute;
+  font-size:50px;
+  left:50%;
+  top:85%;
+    bottom: 0%;
+    margin: auto;
+    animation-iteration-count: infinite; 
+    animation-duration:1.5s;
+    animation:move 2.5s ease infinite;
+}
+@keyframes move{
+  0% {
+    transform: translate(0);
+  }
+  50% {
+    transform: translate(0,20px);
+}
+  100% {
+    transform: translate(0);
+  }
+}
+.h1{
+    
+    color:white;
+    word-wrap: normal;
+   
+    font-family:'Roboto Condensed', sans-serif ;
+    white-space: pre-wrap;
+    vertical-align: middle;
+    text-align:center;
+   
+  }
+  .h2{
+    margin-top:50px;
+    color:white;
+    word-wrap: normal;
+    font-family:'Roboto Condensed', sans-serif ;
+    white-space: pre-wrap;
+    vertical-align: middle;
+    text-align:center;
+   
+  }
+  
 .navbar-expand-lg{
- 
-padding:0px 0px 0px 0px;
+  
+  
+padding:0px;
 margin-top:0px;
 box-sizing: border-box;
-background: transparent;
+background-color: white;
+background:rgba(24, 24, 24, 0);
 transition:background-color 0.5s linear;
 
 }
 
 .navbar-expand-lg.scrolled{
 transition:background-color 0.5s linear;
-background-color:#2c2c2c;
+background-color:white;
 
 }
 
@@ -40,10 +96,9 @@ list-style: none;
 display: inline-block;
 font-family: 'Roboto Condensed', sans-serif;
 font-size: 20px;
-margin:10px 90px 10px 90px;
-
+margin:8px 90px 10px 90px;
 text-decoration: none;
-padding:0px 0px; 
+padding:0px; 
 
 
 }
@@ -55,7 +110,7 @@ padding:0px 0px;
   height: 3px;
   width: 0px;
   background: transparent;
-  transition: width 1s ease, background-color 1s ease;
+  transition: width 0.5s ease, background-color 0.5s ease;
   
   text-decoration: none;
 }
@@ -74,19 +129,28 @@ padding:0px 0px;
   
 }
 a{
-    color:white;
+   
+
     text-decoration: none; 
+}
+.nav-link{
+  color:white;
+}
+.nav-link.scrolled{
+  color:black;
 }
 a:visited {
     text-decoration: none; 
     
   }
+  
   .navbar-item:hover:after{
-    width: 100%;
-    background:white;
+    width:100%;
+    background:black;
     text-decoration-style: none;
     
   }
+  
   a:hover{
     text-decoration: none;
     color:white;
@@ -105,7 +169,7 @@ a:visited {
   }
   .navbar-collapse.scrolled{
     transition:background-color 0.5s linear;
-    background-color:#2c2c2c;
+    background-color:black;
     transition:height 1s;
     }
   
@@ -122,30 +186,112 @@ display:inline-block;
     color: white;
     margin:5px;
     display: inline-block;
+   
+   
+    
   }
-  
+  .fa-bars.scrolled{
+    color:black;
+    margin:5px;
+  }
   
   .meniu{
     color:white;
     margin:5px;
+  
   }
-  
-  
-  
-  h1{
+  .meniu.scrolled{
+    color:black;
+    margin:5px;
+  }
+  #about-us{
     
+    background: #131313;
+
+    scroll-margin:40px;
+  }
+  #about-us #objective{
+    font-size:60px;
     color:white;
-    word-wrap: normal;
-    margin:150px 0px 0px 0px;
-    font-family:'Roboto Condensed', sans-serif ;
-    white-space: pre-wrap;
-    
-    text-align:center;
-    
-    
+    font-family: 'Roboto Condensed', sans-serif;
+  text-align: center;
+  
+  }
+  #about-us #about{
+    font-size:30px;
+    color:white;
   }
   
   
   
   
+  #clmn-1{
+    background: white;  /* fallback for old browsers */
+border-width: 3px;
+border-style: solid;
+border-radius:25px;
+
+  }
+  #clmn-2{
+    background: white;  /* fallback for old browsers */
+    border-width: 3px;
+    border-style: solid;
+    border-radius:25px;
+
+
+    
+    
+ 
+ 
+  }
+  @media only screen and (max-width: 600px) {
+    #clmn-2 {
+      margin-top:20px;
+    }
+  }
+  #contact #head-1, #head-2{
+font-family: 'Roboto Condensed', sans-serif;
+text-align: center;
+color:black;
+font-size:40px;
+  }
   
+  
+  .form-group #name, #surname, #email{
+color:black;
+  }
+  
+  
+  .form-control, #txtarea{
+    color:black;
+  }
+.custom-control-label{
+    
+    color:black;
+  }
+  #comment{
+    
+    color:black;
+    
+  }
+  #paslauga{
+    color:black;
+  }
+  #send-btn{
+    
+    margin-top:60px;
+  }
+#txt-1{
+  color:black;
+  
+}
+iframe{
+  width:100%;
+
+ 
+}
+
+  
+
+
+

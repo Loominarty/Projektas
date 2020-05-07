@@ -17,33 +17,41 @@
     $(document).scroll(function () {
       var $nav = $(".navbar-expand-lg");
       var $clps=$(".collapse .navbar-collapse");
+      var $bg=$(".backgroundimg");
+      var $nav_link=$(".nav-link");
+      var $meniu=$(".meniu");
+      var $bars=$(".fa-bars");
+      
       $nav.toggleClass('scrolled', $(this).scrollTop() > 0);
       $clps.toggleClass('scrolled', $(this).scrollTop() > 0);
+      $nav_link.toggleClass('scrolled',$(this).scrollTop() > 0);
+      $meniu.toggleClass('scrolled',$(this).scrollTop() > 0);
+      $bars.toggleClass('scrolled',$(this).scrollTop() > 0);
+     
     });
   });
    </script>   
    
-
 </head>
-   
-<body data-spy="scroll" data-target="#navbar-1">
+ 
+<body>
     
    
 
        
     
-<h1 class="text-md-center">Elektroninė Kompiuterio dalių parduotuvė - [Pavadinimas]</h1>
+<header>
 <nav id="navbar-1" class="navbar navbar-expand-lg fixed-top" >
  <a class="navbar-brand" href="index.html"><img src="./pics/logo-2.png" alt="logotipas" class="img"></a>
     <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler">
-        <span class="meniu"><i class="fa fa-bars rotate"></i>Meniu</span>
+        <span class="meniu" id="meniu"><i class="fa fa-bars"></i>Meniu</span>
     </button>
 
     <div id="navbarSupportedContent" class="collapse navbar-collapse">
-<ul class="navbar-nav flex-wrap">
+<ul class="navbar-nav flex-wrap mr-auto">
     
 <li class="navbar-item">
-    <a href="#apie-mus" class="nav-link">Apie mus</a>
+    <a href="#about-us" class="nav-link">Apie mus</a>
 </li>
 <li class="navbar-item">
     <a href="#Kontaktai" class="nav-link">Kontaktai</a>
@@ -65,9 +73,86 @@
 </div>
 </nav>
 
+</header>
+
+<div class="backgroundimg">
+    
+    <div class="container" id="front-page-txt">
+        <h1 class="h1">Elektroninė kompiuterio dalių parduotuvė - [Pavadinimas]</h1>
+        <h2 class="h2">Tavo kompiuterinės įrangos parduotuvė</h2>
+        
+
+    </div>
+     <div class=front-page-icon>
+       <a href="#about-us" id="arrow-down"><i class="fas fa-chevron-down" ></i></a>
+       </div>
+</div>
+<div class="container-fluid shadow-lg p-3 mb-5" id="about-us">
+<div class="row">
+    <div class="container" id="objective">
+<p><b>Musu tikslas</b></p>
+</div>
+</div>
+<div class="row" >
+    <div class="container" id="about">
+    <p>
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione eaque delectus voluptatum facilis soluta voluptate obcaecati suscipit, illum, exercitationem aliquam quos quia nam itaque! Praesentium exercitationem fugiat vitae asperiores commodi?
+</p>
+</div>
+</div>
 
 
 
+</div>
+
+
+
+<div class="container" id="contact">
+<div class="row">
+<div class="col-sm-6" id="clmn-1">
+    <p id="head-1">Užduok klausymų arba</br> teiraukis dėl paslaugų</p>
+    <form class="form-group">
+        <label id="name">Vardas(būtina)</label>
+        <input type="text" class="form-control" required="true" oninvalid="this.setCustomValidity('Įveskite vardą')" oninput="setCustomValidity('')">
+        
+        <label id="surname">Pavardė(būtina)</label>
+        <input type="text" class="form-control" required="true" oninvalid="this.setCustomValidity('Įveskite pavardę')" oninput="setCustomValidity('')">
+        <label id="email">Elektroninis paštas(būtina)</label>
+        <input type="email" class="form-control" required="true" oninvalid="this.setCustomValidity('Įveskite tinkamą elektroninį paštą')" oninput="setCustomValidity('')">
+        <p id="paslauga">Pasirinkite paslaugą:</p>
+        <div class="custom-control custom-radio">
+            <input type="radio" id="paslauga-1" name="paslaugos" class="custom-control-input" required="true">
+            <label class="custom-control-label" for="paslauga-1">Konsultavimas</label>
+          </div>
+          <div class="custom-control custom-radio">
+            <input type="radio" id="paslauga-2" name="paslaugos" class="custom-control-input" required="true">
+            <label class="custom-control-label" for="paslauga-2">Kompiuterio tvarkymas</label>
+          </div>
+          <div class="custom-control custom-radio">
+            <input type="radio" id="paslauga-3" name="paslaugos" class="custom-control-input" required="true">
+            <label class="custom-control-label" for="paslauga-3">Kompiuterio surinkimas</label>
+            </div>
+            <div class="custom-control custom-radio">
+                <input type="radio" id="paslauga-4" name="paslaugos" class="custom-control-input" required="true">
+                <label class="custom-control-label" for="paslauga-4">Nepasirinktas</label>
+              </div>
+              
+          <label id="comment" for="txtarea">Komentaras(nebūtina):</label>
+    <textarea class=custom-control id="txtarea" cols="30" rows="4"></textarea>
+    <button type="submit" class="btn btn-dark" id="send-btn">Siųsti</button>
+            </form>
+</div>
+<div class="col-sm-1"></div>
+<div class="col-sm-5" id="clmn-2">
+<p id="head-2">Kontaktai</p>
+<p id="txt-1">Adresas: Taikos pr. 64, Klaipėda</br>Telefono numeris: +37064613976</br>Darbo laikas: I-IV 08:00-19:00</p>
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2248.5762837096854!2d21.14550415183084!3d55.69635408044279!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46e4dc0caf686c49%3A0x839671876f818837!2sTaikos%20pr.%2034%2C%20Klaip%C4%97da%2091219!5e0!3m2!1slt!2slt!4v1588685691488!5m2!1slt!2slt" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+</div>
+
+
+
+</div>
+</div>
 
 
     
@@ -78,6 +163,11 @@
            
 
 
+<script>
+    $(document).ready(function(){
+      $('body').scrollspy({target: "#navbar-1", offset: 10});   
+    });
+    </script>
 
 </body>
 </html>
