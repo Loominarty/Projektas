@@ -1,8 +1,8 @@
 html{
-margin:0;
     height:100%;
     scroll-behavior: smooth;
 padding:0;
+margin:0;
 
 }
 
@@ -14,7 +14,7 @@ body{
   
 }
 .backgroundimg{
-  background: linear-gradient(rgba(26, 26, 26, 0.8), rgba(26, 26, 26, 0.8)), url(./pics/technical.jpg);
+  background: linear-gradient(rgba(26, 26, 26, 0.8), rgba(26, 26, 26, 0.8)), url(./pics/gaming.jpg);
   background-size:cover;
   background-position:center center;
   background-repeat: no-repeat;
@@ -32,30 +32,20 @@ body{
   position:absolute;
   font-size:50px;
   left:50%;
-  top:85%;
+  top:90%;
     bottom: 0%;
     margin: auto;
     animation-iteration-count: infinite; 
     animation-duration:1.5s;
     animation:move 2.5s ease infinite;
 }
-@keyframes move{
-  0% {
-    transform: translate(0);
-  }
-  50% {
-    transform: translate(0,20px);
-}
-  100% {
-    transform: translate(0);
-  }
-}
+
 .h1{
     
     color:white;
     word-wrap: normal;
    
-    font-family:'Roboto Condensed', sans-serif ;
+    font-family: 'Chivo', sans-serif;
     white-space: pre-wrap;
     vertical-align: middle;
     text-align:center;
@@ -65,7 +55,7 @@ body{
     margin-top:50px;
     color:white;
     word-wrap: normal;
-    font-family:'Roboto Condensed', sans-serif ;
+    font-family: 'Chivo', sans-serif;
     white-space: pre-wrap;
     vertical-align: middle;
     text-align:center;
@@ -78,7 +68,7 @@ body{
 padding:0px;
 margin-top:0px;
 box-sizing: border-box;
-background-color: white;
+
 background:rgba(24, 24, 24, 0);
 transition:background-color 0.5s linear;
 
@@ -86,7 +76,7 @@ transition:background-color 0.5s linear;
 
 .navbar-expand-lg.scrolled{
 transition:background-color 0.5s linear;
-background-color:white;
+background-color:black;
 
 }
 
@@ -94,7 +84,7 @@ background-color:white;
   vertical-align: middle;  
 list-style: none;
 display: inline-block;
-font-family: 'Roboto Condensed', sans-serif;
+font-family: 'Lato', sans-serif;
 font-size: 20px;
 margin:8px 90px 10px 90px;
 text-decoration: none;
@@ -137,7 +127,7 @@ a{
   color:white;
 }
 .nav-link.scrolled{
-  color:black;
+  color:#EF0107;
 }
 a:visited {
     text-decoration: none; 
@@ -146,7 +136,7 @@ a:visited {
   
   .navbar-item:hover:after{
     width:100%;
-    background:black;
+    background:#EF0107;
     text-decoration-style: none;
     
   }
@@ -169,7 +159,7 @@ a:visited {
   }
   .navbar-collapse.scrolled{
     transition:background-color 0.5s linear;
-    background-color:black;
+    background-color:white;
     transition:height 1s;
     }
   
@@ -191,7 +181,7 @@ display:inline-block;
     
   }
   .fa-bars.scrolled{
-    color:black;
+    color:white;
     margin:5px;
   }
   
@@ -201,88 +191,127 @@ display:inline-block;
   
   }
   .meniu.scrolled{
-    color:black;
+    color:white;
     margin:5px;
   }
   #about-us{
+    position:relative;
+    -webkit-box-shadow: 0px 0px 155px -29px rgba(239,1,7,1);
+-moz-box-shadow: 0px 0px 155px -29px rgba(239,1,7,1);
+box-shadow: 0px 0px 155px -29px rgba(239,1,7,1);
+    background: black;
+transition:box-shadow 2s;
+    scroll-margin:250px;
     
-    background: #131313;
-
-    scroll-margin:40px;
   }
+  
   #about-us #objective{
     font-size:60px;
     color:white;
-    font-family: 'Roboto Condensed', sans-serif;
+    font-family: 'Chivo', sans-serif;
   text-align: center;
   
   }
   #about-us #about{
     font-size:30px;
     color:white;
+    font-family: 'Chivo', sans-serif;
   }
-  
-  
-  
+   #contact{
+    scroll-margin:220px;
+    position: relative;
+    -webkit-box-shadow: 0px 0px 155px -29px rgba(239,1,7,1);
+-moz-box-shadow: 0px 0px 155px -29px rgba(239,1,7,1);
+box-shadow: 0px 0px 155px -29px rgba(239,1,7,1);
+
+  }
+  #clmn-tp-1, #clmn-tp-3, #clmn-tp-2{
+    background-color:black;
+    
+  }
   
   #clmn-1{
-    background: white;  /* fallback for old browsers */
-border-width: 3px;
-border-style: solid;
-border-radius:25px;
+    background-color:black;
+    
+    
+    
 
   }
+  
   #clmn-2{
-    background: white;  /* fallback for old browsers */
-    border-width: 3px;
-    border-style: solid;
-    border-radius:25px;
-
-
+    background:black;
     
     
- 
- 
+
   }
+  
+  
   @media only screen and (max-width: 600px) {
     #clmn-2 {
-      margin-top:20px;
+      border-top-width:1px;
+      border-top-color:white;
+      border-top-style: solid;
+    }
+    #delivery-2, #delivery-3{
+      border-top-width:1px;
+      border-top-color:white;
+      border-top-style: solid;
     }
   }
+  @keyframes move{
+0%{
+  transform:translate(0);
+}
+50% {
+  transform: translate(0,20px);
+}
+100% {
+  transform: translate(0);
+}
+  }
+  #bg-2{
+    background-image:url(./pics/gaming-2.jpg);
+    background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height:600px;
+  
+  }
+  #bg-3{
+    background-image:url(./pics/gaming-3.jpg);
+    background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height:400px;
+  
+  }
+ 
   #contact #head-1, #head-2{
-font-family: 'Roboto Condensed', sans-serif;
+    
+    font-family: 'Chivo', sans-serif;
 text-align: center;
-color:black;
+color:white;
 font-size:40px;
   }
   
   
-  .form-group #name, #surname, #email{
-color:black;
-  }
   
   
-  .form-control, #txtarea{
-    color:black;
+  
+  .form-control, #txtarea, .custom-control-label,.form-group #name, #surname, #email, #comment, #paslauga{
+    color:white;
+    font-family: 'Chivo', sans-serif;
   }
-.custom-control-label{
-    
-    color:black;
-  }
-  #comment{
-    
-    color:black;
-    
-  }
-  #paslauga{
-    color:black;
-  }
+
   #send-btn{
     
-    margin-top:60px;
+    margin-top:50px;
   }
 #txt-1{
-  color:black;
+  color:white;
+  font-family: 'Chivo', sans-serif;
   
 }
 iframe{
@@ -290,8 +319,84 @@ iframe{
 
  
 }
-
+#delivery{
+  background-color:black;
+  position: relative;
+  -webkit-box-shadow: 0px 0px 155px -29px rgba(239,1,7,1);
+-moz-box-shadow: 0px 0px 155px -29px rgba(239,1,7,1);
+box-shadow: 0px 0px 155px -29px rgba(239,1,7,1);
+scroll-margin:200px;
+}
+#Pristatymas{
+  color:white;
+  font-family: 'Chivo', sans-serif;
+}
+#delivery-txt{
+  border-bottom-width:1px;
+  border-bottom-color:white;
+  border-bottom-style:solid;
+}
+#delivery-options{
+  border-right-width:1px;
+  border-right-color:white;
+  border-right-style:solid;
   
-
-
-
+}
+#delivery-1, #delivery-2, #delivery-3{
+  color:white;
+  font-family: 'Chivo', sans-serif;
+  font-size:20px;
+  
+}
+#delivery-1-1, #delivery-2-2, #delivery-3-3{
+  color:white;
+  font-family: 'Chivo', sans-serif;
+  font-size:20px;
+}
+#delivery-icon{
+  margin-left:5px;
+}
+#bg-4{
+  background-image:url(./pics/gaming-3.jpg);
+    background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height:400px;
+}
+#payment{
+  
+  background-color:black;
+  -webkit-box-shadow: 0px 0px 155px -29px rgba(239,1,7,1);
+-moz-box-shadow: 0px 0px 155px -29px rgba(239,1,7,1);
+box-shadow: 0px 0px 155px -29px rgba(239,1,7,1);
+}
+#payment-txt, #payment-1, #payment-2, #payment-3, #payment-1-1, #payment-2-2, #payment-3-3{
+  color:white;
+  font-family: 'Chivo', sans-serif;
+  font-size:20px;
+}
+#social-bar{
+  background-color:black;
+  border-top-width:1px;
+  border-top-color:white;
+  border-top-style:solid;
+}
+#social-txt{
+  
+  color:white;
+  font-size:20px;
+  
+}
+#social-1, #social-2, #social-3, #social-4{
+  display:inline-block;
+  color:white;
+  font-size:20px;
+  margin:0px 10px;
+}
+#arrow-up{
+  color:white;
+  font-size:50px;
+text-align: center;
+margin-left:50%;
+}

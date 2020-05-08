@@ -8,10 +8,12 @@
         <link href="main.css" rel="stylesheet">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Chivo:300,700|Playfair+Display:700i" rel="stylesheet">
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-    <script href="main.js" rel="text/javascript"></script>    
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script> 
+    <script>history.scrollRestoration = "manual"</script>
     <script>
        $(function () {
     $(document).scroll(function () {
@@ -31,7 +33,11 @@
     });
   });
    </script>   
-   
+   <script>
+ $('.navbar-item').on('click',function() {
+  $('.navbar-collapse').collapse('show');
+});
+   </script>
 </head>
  
 <body>
@@ -54,13 +60,13 @@
     <a href="#about-us" class="nav-link">Apie mus</a>
 </li>
 <li class="navbar-item">
-    <a href="#Kontaktai" class="nav-link">Kontaktai</a>
+    <a href="#contact" class="nav-link">Kontaktai</a>
 </li>
 <li class="navbar-item">
-    <a href="#Pristatymas" class="nav-link">Pristatymas</a>
+    <a href="#delivery" class="nav-link">Pristatymas</a>
 </li>
 <li class="navbar-item">
-    <a href="#Apmokėjimas" class="nav-link">Apmokėjimas</a>
+    <a href="#payment" class="nav-link">Apmokėjimas</a>
 </li>
 <li class="navbar-item">
     <a href="#" class="nav-link">Katalogas</a>
@@ -78,8 +84,8 @@
 <div class="backgroundimg">
     
     <div class="container" id="front-page-txt">
-        <h1 class="h1">Elektroninė kompiuterio dalių parduotuvė - [Pavadinimas]</h1>
-        <h2 class="h2">Tavo kompiuterinės įrangos parduotuvė</h2>
+        <h1 class="h1">kompiuterio dalių ir elektronikos parduotuvė - [Pavadinimas]</h1>
+        <h2 class="h2">Tavo kompiuterinės įrangos parduotuvė nuo 2020</h2>
         
 
     </div>
@@ -87,7 +93,8 @@
        <a href="#about-us" id="arrow-down"><i class="fas fa-chevron-down" ></i></a>
        </div>
 </div>
-<div class="container-fluid shadow-lg p-3 mb-5" id="about-us">
+<div class="container-fluid p-3" id="about-us">
+
 <div class="row">
     <div class="container" id="objective">
 <p><b>Musu tikslas</b></p>
@@ -96,7 +103,7 @@
 <div class="row" >
     <div class="container" id="about">
     <p>
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione eaque delectus voluptatum facilis soluta voluptate obcaecati suscipit, illum, exercitationem aliquam quos quia nam itaque! Praesentium exercitationem fugiat vitae asperiores commodi?
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, nisi! Eaque officia itaque, deleniti accusantium quaerat sequi rem aut ex facilis ea obcaecati doloribus accusamus possimus minima dolorem iure in aliquid earum reprehenderit! Molestias culpa ipsum soluta eos amet explicabo blanditiis! Odit culpa veritatis esse. Iure labore quas reiciendis dignissimos.
 </p>
 </div>
 </div>
@@ -104,12 +111,15 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione eaque delectus 
 
 
 </div>
+<div class="container-fluid" id="bg-2">
+    
+</div>
 
 
-
-<div class="container" id="contact">
+<div class="container-fluid" id="contact">
 <div class="row">
-<div class="col-sm-6" id="clmn-1">
+    <div class="col-sm-1" id="clmn-tp-1"></div>
+<div class="col-sm-4" id="clmn-1">
     <p id="head-1">Užduok klausymų arba</br> teiraukis dėl paslaugų</p>
     <form class="form-group">
         <label id="name">Vardas(būtina)</label>
@@ -139,35 +149,91 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione eaque delectus 
               
           <label id="comment" for="txtarea">Komentaras(nebūtina):</label>
     <textarea class=custom-control id="txtarea" cols="30" rows="4"></textarea>
-    <button type="submit" class="btn btn-dark" id="send-btn">Siųsti</button>
+    <button type="submit" class="btn btn-light" id="send-btn">Siųsti</button>
             </form>
 </div>
-<div class="col-sm-1"></div>
-<div class="col-sm-5" id="clmn-2">
+<div class="col-sm-2" id="clmn-tp-2"></div>
+<div class="col-sm-4" id="clmn-2">
 <p id="head-2">Kontaktai</p>
 <p id="txt-1">Adresas: Taikos pr. 64, Klaipėda</br>Telefono numeris: +37064613976</br>Darbo laikas: I-IV 08:00-19:00</p>
 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2248.5762837096854!2d21.14550415183084!3d55.69635408044279!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46e4dc0caf686c49%3A0x839671876f818837!2sTaikos%20pr.%2034%2C%20Klaip%C4%97da%2091219!5e0!3m2!1slt!2slt!4v1588685691488!5m2!1slt!2slt" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 </div>
-
+<div class="col-sm-1" id="clmn-tp-3"></div>
 
 
 </div>
+
 </div>
-
-
+<div class="container-fluid" id="bg-3"></div>
+<div class="container-fluid" id="delivery">
     
+    <div class="row">
+        <div class="col-sm-12" id="delivery-txt"><p class="text-center" id="Pristatymas"><b>Pristatymo budai</b></p></div>
+    </div>
+<div class="row">
+<div class="col-sm-4" id="delivery-options"><p class="text-center" id="delivery-1"><b>1. Pristatymas per "Venipak LT" siuntu tarnyba</b><i class="fas fa-truck" id="delivery-icon"></i></p></br>
+    <p id="delivery-1-1"><b>Pristatymo kaina: nuo 3.50 EUR</b>
+    Prekės pristatomos per 1-2 darbo dienas karantino laikotarpiu 1-3 darbo dienos po užsakymo (jeigu nenurodyta kitaip). Kurjeris sms žinute informuoja apie preliminarų pristatymo laiką ir Jūsų pristatymo adresą (esant pokyčiams arba pasiteiravimui galite skambinti nurodytu Kurjerio telefono numeriu) kiekvieną darbo dieną laikotarpyje tarp 08:00-22:00 val.
+    Klaipėdoje, Šiauliuose ir Panevėžyje galima nurodyti tikslesnį pristatymo laiką: 08:00-14:00, 14:00-17:00.
+    Vilniuje ir Kaune galima nurodyti tikslesnį pristatymo laiką: 08:00-14:00, 14:00-17:00 arba 18:00-22:00.</p></div>
+<div class="col-sm-4" id="delivery-options"><p class="text-center" id="delivery-2">2. Prekiu atsiemimas "Omniva" pastomatuose<i class="fas fa-box" id="delivery-icon"></i></br></br></p>
+    <p id="delivery-2-2"><b>Pristatymo kaina: 2.29</b> EUR Įprastai prekės į Jūsų pasirinktą paštomatą pristatomos per 1-2 darbo dienas po užsakymo apmokėjimo (jeigu nenurodyta kitaip). Savo nurodytu el. paštu gausite siuntos nr. (kurį įvedę nurodytu adresu, galėsite pasitikrint siuntos būseną). Apie pristatytą siuntą sistema informuos sms žinute Jūsų nurodytu telefono numeriu.</p>
+</div>
+<div class="col-sm-4" id="delivery-options"><p class="text-center" id="delivery-3"><b>3. Prekiu pristatymas per "Lietuvos pasta"</b><i class="fas fa-mail-bulk" id="delivery-icon"></i></p></br><p id="delivery-3-3"><b>Pristatymo kaina: 3.99 EUR</b>
+    Įprastai užsakymas Jus pasieks per 1-4 darbo dienas po užsakymo apmokėjimo (jeigu nenurodyta kitaip). Paštas pristatys Jums siuntinį Jūsų nurodytu adresu arba paliks pranešimą apie gautą siuntinį, kurį Jūs galėsite atsiimti savo gyvenamosios vietos pašto skyriuje.</p></div>
+</div>
 
+</div>
+<div class="container-fluid" id="bg-4"></div>
+<div class="container-fluid" id="payment">
+
+    <div class="row">
+        <div class="col-sm-12"><p class="text-center" id="payment-txt"><b>Atsiskaitymas</b></p></div>
+    </div>
+    <div class="row">
+<div class="col-sm-4" id="payment-options"><p class="text-center" id="payment-1"><b>1. Pagal išankstinę sąskaitą faktūrą</b></p></br><p id="payment-1-1">
+    Pasirinkę šį atsiskaitymo būdą, pagal Jums sugeneruotą išankstinę sąskaitą perveskite arba grynais įneškite pinigus į mūsų sąskaitą, bet kuriame Jums patogiame banke.
+Informacija apmokėjimui:</br>Gavėjas:</br>Gavėjo kodas:A/S:</br>Bankas:Banko kodas:</br>Mokėjimo paskirtis: </br>nurodyti Užsakymo ID:</p>
+
+</div>
+<div class="col-sm-4" id="payment-options"><p class="text-center" id="payment-2"><b>2. Elektroninė bankininkystė</b></p><p id="payment-2-2"></br>Pasirinkę šį atsiskaitymo būdą, galėsite saugiai ir nedelsdami atsiskaityti elektroninės bankininkystės būdu iš Lietuvoje veikiančių bankų ar kredito unijų sąskaitų, taip pat kreditinėmis kortelėmis, grynaisiais pinigais MAXIMA kasose, "Perlo" terminaluose, "Narvesen" bei "Lietuvos spauda".</p>
+
+
+
+
+
+
+</div>
+<div class="col-sm-4" id="payment-options"><p class="text-center" id="payment-3"><b>3. Grynaisiais pinigais arba bankine kortele atsiimant prekes</b></p></br>
+    <p id="payment-3-3">
+        Jūsų patogumui siūlome atsiskaityti už prekes kaip esate įpratę įprastoje parduotuvėje – grynaisiais pinigais arba bankine kortele. Pasirinkę šį mokėjimo būdą, atsiskaitysite ne užsakymo metu, o kurjeriui pristačius prekes.
+    </p>
+
+
+
+
+
+</div>
+    </div>
+</div>
+<footer>
+    <div class="container-fluid" id="social-bar">
+        <div class="row">
+        <div class="col-sm-12">
+        <p id="social-txt">Mus galite rasti: <i class="fab fa-facebook-square" id="social-1"></i><i class="fab fa-instagram" id="social-2"></i><i class="fab fa-google-plus-square" id="social-3"></i> <i class="fab fa-twitter" id="social-4"></i></p>
+        </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12"><a href="#"><i class="fas fa-arrow-circle-up" id="arrow-up"></i></a></div>
+        </div>
+</footer>
 
            
            
            
 
 
-<script>
-    $(document).ready(function(){
-      $('body').scrollspy({target: "#navbar-1", offset: 10});   
-    });
-    </script>
+
 
 </body>
 </html>
