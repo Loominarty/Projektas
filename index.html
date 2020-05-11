@@ -34,8 +34,10 @@
   });
    </script>   
    <script>
- $('.navbar-item').on('click',function() {
-  $('.navbar-collapse').collapse('show');
+ $(document).on('click', function(event) {
+  if (!$(event.target).closest('.navbar-nav').length) {
+    $('.navbar-collapse').collapse('hide');
+  }
 });
    </script>
 </head>
@@ -71,9 +73,7 @@
 <li class="navbar-item">
     <a href="#" class="nav-link">Katalogas</a>
 </li>
-<li class="navbar-item">
-<a href="#" class="nav-link"><i class="fas fa-shopping-cart"></i>Krepšelis</a>
-</li>
+
 </ul>
 
 </div>
