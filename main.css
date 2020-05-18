@@ -44,7 +44,7 @@ body{
     
     color:white;
     word-wrap: normal;
-   
+   width:100%;
     font-family: 'Chivo', sans-serif;
     white-space: pre-wrap;
     vertical-align: middle;
@@ -52,6 +52,7 @@ body{
    
   }
   .h2{
+    width:100%;
     margin-top:50px;
     color:white;
     word-wrap: normal;
@@ -62,7 +63,7 @@ body{
    
   }
   
-.navbar-expand-lg{
+.navbar-expand-xl{
   
   
 padding:0px;
@@ -74,7 +75,7 @@ transition:background-color 0.5s linear;
 
 }
 
-.navbar-expand-lg.scrolled{
+.navbar-expand-xl.scrolled{
 transition:background-color 0.5s linear;
 background-color:black;
 
@@ -86,11 +87,9 @@ list-style: none;
 display: inline-block;
 font-family: 'Lato', sans-serif;
 font-size: 20px;
-margin:8px 120px 10px 120px;
+margin:8px 55px 10px 60px;
 text-decoration: none;
 padding:0px; 
-
-
 }
 
 .navbar-item:after{
@@ -99,6 +98,7 @@ padding:0px;
   margin: auto;
   height: 3px;
   width: 0px;
+  
   background: transparent;
   transition: width 0.5s ease, background-color 0.5s ease;
   
@@ -247,29 +247,21 @@ box-shadow: 0px 0px 155px -29px rgba(239,1,7,1);
   }
   
   
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 992px) {
     #clmn-2 {
       border-top-width:1px;
       border-top-color:white;
       border-top-style: solid;
+      margin-top:10px;
     }
     #delivery-2, #delivery-3{
       border-top-width:1px;
       border-top-color:white;
       border-top-style: solid;
+      
     }
   }
-  @keyframes move{
-0%{
-  transform:translate(0);
-}
-50% {
-  transform: translate(0,20px);
-}
-100% {
-  transform: translate(0);
-}
-  }
+  
   #bg-2{
     background-image:url(./pics/gaming-2.jpg);
     background-attachment: fixed;
@@ -298,7 +290,17 @@ font-size:40px;
   }
   
   
-  
+  @keyframes move{
+    0%{
+      transform:translate(0);
+    }
+    50% {
+      transform: translate(0,20px);
+    }
+    100% {
+      transform: translate(0);
+    }
+      }
   
   
   .form-control, #txtarea, .custom-control-label,.form-group #name, #surname, #email, #comment, #paslauga{
@@ -400,4 +402,58 @@ box-shadow: 0px 0px 155px -29px rgba(239,1,7,1);
   font-size:50px;
 text-align: center;
 margin-left:50%;
+}
+/* Builder.html styles */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+}
+
+
+.tab button:hover {
+  background-color: #ddd;
+}
+
+
+.tab button.active {
+  background-color: #ccc;
+}
+
+
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+table tbody tr:hover{
+  
+  cursor:pointer;
+}
+.selected-1,.selected-2,.selected-3,.selected-4,.selected-5,.selected-6,.selected-7{
+  background-color:green;
+}
+#pasirinktos_dalys{
+background-color:black;
+
+}
+#pasirinktos_dalys ul li{
+  color:white;
+}
+#check-build{
+  position:relative;
+  left:97%;
+  border-radius:10px;
 }
