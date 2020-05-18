@@ -31,7 +31,7 @@ body{
   color:white;
   position:absolute;
   font-size:50px;
-  left:50%;
+  left:48%;
   top:90%;
     bottom: 0%;
     margin: auto;
@@ -252,7 +252,7 @@ box-shadow: 0px 0px 155px -29px rgba(239,1,7,1);
       border-top-width:1px;
       border-top-color:white;
       border-top-style: solid;
-      margin-top:10px;
+      
     }
     #delivery-2, #delivery-3{
       border-top-width:1px;
@@ -403,14 +403,15 @@ box-shadow: 0px 0px 155px -29px rgba(239,1,7,1);
 text-align: center;
 margin-left:50%;
 }
-/* Builder.html styles */
+
 .tab {
   overflow: hidden;
   border: 1px solid #ccc;
   background-color: #f1f1f1;
+
 }
 
-/* Style the buttons that are used to open the tab content */
+
 .tab button {
   background-color: inherit;
   float: left;
@@ -456,4 +457,7 @@ background-color:black;
   position:relative;
   left:97%;
   border-radius:10px;
+}
+#h6-txt{
+  color:white;
 }
