@@ -31,7 +31,10 @@ body{
 .pic{
     border-bottom: white 1px;
 }
- 
+ .img{
+   width:100px;
+   height:60px;
+ }
   .itm{
     padding:5px;
     text-align: left;
