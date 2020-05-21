@@ -50,15 +50,6 @@
     overflow: auto;
   }
   
-  .filtras h3 {
-    margin: 20px;
-  }
-  
-  .filtras small {
-    display: block;
-    width: 100%;
-  }
-  
   .pagination {
     padding: 20px 0;
   }

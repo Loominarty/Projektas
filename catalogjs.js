@@ -1,23 +1,16 @@
 $(document).ready(function(){
     var max_kaina = 0;
     var kaina_iki = 2000;
-    var tik_akcijos = 0;
     var rodyti_prekiu = 12;
-    var rodyti_kategorija = 0;
     var puslapiu = 1;
     var puslapis = 1;
-
     var $prekes = $(".it");
-
-
     if (location.hash.indexOf("#p") == 0){
         var numeris = parseInt(location.hash.replace("#p", ""));
-
         if (puslapis != numeris && numeris > 0){
             puslapis = numeris;
         }
     }
-
     function lygiuoti(){
         var max_aukstis = 0;
 
@@ -27,12 +20,8 @@ $(document).ready(function(){
             var $preke = $(this);
             max_aukstis = Math.max(max_aukstis, $preke.height());
         });
-
         max_aukstis = Math.ceil(max_aukstis);
-
-
         $prekes.css("height", max_aukstis);
-
     }
 
     function gautiZodzius(tekstas){
@@ -46,43 +35,24 @@ $(document).ready(function(){
         for (var i = 0; i < txt1.length; i++) {
             tekstas = tekstas.replace(new RegExp(txt1[i], 'g'), txt2[i]);
         }
-
         var atrinkti_zodziai = tekstas.split(" ");
-        
         atrinkti_zodziai = atrinkti_zodziai.filter(zodis=>zodis!='');
-        
         return(atrinkti_zodziai);
     }
-
     function filtruoti(){
-
         $prekes.parent().show();
         var rodoma_prekiu = 0;
-
-
         $prekes.each(function(){
             var $preke = $(this);
             var preke_rodoma = true;
-
-
             if (parseFloat($preke.attr("kaina")) > kaina_iki){
                 $preke.parent().hide();
-                preke_rodoma = false;
+                preke_rodoma = true;
             }
-
-            if (tik_akcijos == 1){
-                if (parseInt($preke.attr("akcija")) == 0){
-                    $preke.parent().hide();
-                    preke_rodoma = false;
-                }
-            }
-
             if (zodziai.length > 0){
                 var prekes_tekstas = $preke.find("h2").text();
                 prekes_tekstas += " " + $preke.find("p").text();
-                
                 prekes_zodziai = gautiZodzius(prekes_tekstas);
-
                 var rado = false;
                 for (var i = 0; i < zodziai.length; i++) {
                     for (var j = 0; j < prekes_zodziai.length; j++) {
@@ -101,6 +71,8 @@ $(document).ready(function(){
                 }
             }
 
+
+
             if (preke_rodoma){
                 rodoma_prekiu++;                
             }
@@ -113,9 +85,8 @@ $(document).ready(function(){
         }
         var nuo = (puslapis-1) * rodyti_prekiu + 1;
         var iki = puslapis * rodyti_prekiu;
-        
-
         var i = 0;
+
         $prekes.each(function(){
             var $preke = $(this);
             if ($preke.parent().is(":visible")){
@@ -125,8 +96,6 @@ $(document).ready(function(){
                 }
             }
         });
-
-
         var puslapiavimas = "";
         if (puslapiu > 1){
             if (puslapis == 1){
@@ -151,7 +120,6 @@ $(document).ready(function(){
 
         lygiuoti();
     }
-
     $( window ).on( 'hashchange', function( e ) {
         if (location.hash.indexOf("#p") == 0){
             var numeris = parseInt(location.hash.replace("#p", ""));
@@ -161,19 +129,13 @@ $(document).ready(function(){
             }
         }
     });
-
-
     $prekes.each(function(){
         var $preke = $(this);
         var $kaina = $preke.find(".kaina");
         var kaina = parseFloat($kaina.text().replace(",", "."));
         $preke.attr("kaina", kaina);
-        $preke.attr("akcija", $preke.find(".akcija").length);
-        
         max_kaina = Math.max(max_kaina, kaina);
     });
-
- 
     max_kaina = Math.ceil(max_kaina)
     $("#kaina_iki_reiksme").text(max_kaina + ",00 EUR");
     kaina_iki = max_kaina;
@@ -198,11 +160,8 @@ $(document).ready(function(){
         
         filtruoti();
     });
-    
     var zodziai = [];
     var $raktiniai_reiksmes = $("#raktiniai_reiksmes");
-
-
     $("#raktiniai").on('input', function() {
         var visas_tekstas = $(this).val();
 
@@ -218,7 +177,5 @@ $(document).ready(function(){
     $(window).resize(function(){
         lygiuoti();
     });
-
     filtruoti();
-
 });
