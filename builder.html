@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link href="bootstrap.min.js">
+        <link href="bootstrap.min.css" rel="stylesheet">
+        <link href="main.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Chivo:300,700|Playfair+Display:700i" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<title></title>
+<script>
+function opentab(evt, component) {
+  
+  var i, tabcontent, tablinks;
+
+  
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+
+  
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+
+  
+  document.getElementById(component).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
+</script>
+<script>
+ $(document).ready(function(){
+   var decision;
+   var info=$("#information");
+   var info_box=$("#pasirinktos_dalys");
+   var total_sum;
+   var total_wattage;
+   var mobo_string=[];
+   var selected_components=[];
+   var selected_mobo=[];
+   var selected_cpu=[];
+   var selected_gpu=[];
+   var selected_ram=[];
+   var selected_psu=[];
+   var selected_fan=[];
+   var selected_storage=[];
+   var builderis=$(".builderis");
+   var sarasas=builderis.find("#pasirinktos_dalys ul")
+  
+   
+   $("table tbody tr").click(function(){
+     clicked_row=$(this);
+     
+     
+      var parent_table=$(this).parent().parent();
+      
+       var $row=$(this);
+   var $text=$row.find(".pavadinimas").text();
+   $("table tbody tr").not(this).removeClass('selected-1');
+   $(this).toggleClass('selected-1');
+   if(parent_table.is("#table-1")){
+        selected_mobo=[];
+$(this).children().each(function(){
+selected_mobo.push($(this).text());
+document.getElementById("selection-mobo").innerHTML="Pasirinkta motininė plokštė: " + selected_mobo[1];
+
+});
+
+
+      }
+      
+      if(parent_table.is("#table-2")){
+        selected_cpu=[];
+$(this).children().each(function(){
+selected_cpu.push($(this).text());
+document.getElementById("selection-cpu").innerHTML="Pasirinktas procesorius: " + selected_cpu[1];
+
+});
+
+
+      }
+      if(parent_table.is("#table-3")){
+        selected_gpu=[];
+$(this).children().each(function(){
+selected_gpu.push($(this).text());
+document.getElementById("selection-gpu").innerHTML="Pasirinkta vaizdo plokštė: " + selected_gpu[1];
+
+});
+
+
+      }
+      if(parent_table.is("#table-4")){
+        selected_ram=[];
+$(this).children().each(function(){
+selected_ram.push($(this).text());
+document.getElementById("selection-ram").innerHTML="Pasirinkta operatyvioji atmintis: " + selected_ram[1];
+
+});
+      }
+      if(parent_table.is("#table-5")){
+        selected_psu=[];
+$(this).children().each(function(){
+selected_psu.push($(this).text());
+document.getElementById("selection-psu").innerHTML="Pasirinktas maitinimo blokas: " + selected_psu[1];
+
+});
+      }
+      if(parent_table.is("#table-6")){
+        selected_fan=[];
+$(this).children().each(function(){
+selected_fan.push($(this).text());
+document.getElementById("selection-fan").innerHTML="Pasirinktas ventiliatorius: " + selected_fan[1];
+
+});
+      }
+      if(parent_table.is("#table-7")){
+        selected_storage=[];
+$(this).children().each(function(){
+selected_storage.push($(this).text());
+document.getElementById("selection-storage").innerHTML="Pasirinktas kietasis diskas: " + selected_storage[1];
+
+});
+      }
+     
+ 
+        
+        
+      
+      
+       
+      
+
+
+
+  
+     
+  
+  
+});
+
+
+
+$(document).on('click', "#check-build", function(e){
+  decision=0;
+total_sum=parseFloat(selected_mobo[7])+parseFloat(selected_cpu[6])+parseFloat(selected_gpu[6])+parseFloat(selected_ram[5])+parseFloat(selected_psu[3])+parseFloat(selected_fan[4])+parseFloat(selected_storage[5]);
+total_wattage=parseFloat(selected_mobo[7])+parseFloat(selected_cpu[5])+parseFloat(selected_gpu[5])+parseFloat(selected_fan[4]);
+  info.html("");
+    if(selected_mobo == "" || selected_cpu == "" || selected_gpu == "" || selected_ram == "" || selected_psu == "" || selected_fan == "" || selected_storage == ""){
+alert("Pasirinkite visus komponentus");
+info.html("");
+}else{
+
+
+if(selected_mobo[5].includes(selected_gpu[4])){
+    
+    
+    decision++;
+  }else{
+    info.append("<h5>" + "Motininė plokštė turi neatitikimų su vaizdo plokšte" + "<h5>");
+  }
+if(selected_mobo[3]-selected_ram[3]>=0){
+  decision++;
+  
+}else{
+  info.append("<h5>" + "Ant šios motininės netilps visa operatyvioji atmintis" + "</h5>");
+}
+if(selected_mobo[4]==selected_ram[4] ){
+  decision++;
+}else{
+  info.append("<h5>" + "Netinkama operatyvioji atmintis" + "</h5>");
+}
+
+
+if(total_wattage<selected_psu[2]){
+  decision++;
+}
+else{
+  info.append("<h5>" + "komponentai naudos daugiau elektros energijos, negu maitinimo blokas gali suteikti" + "</h5>");
+}
+if(selected_mobo[2]==selected_cpu[2]){
+decision++;
+}else{
+  info.append("<h5>" + "Netinkamas procesorius" + "</h5>");
+}
+if(selected_fan[3].includes(selected_mobo[2])){
+  
+    decision++;
+  }else{
+    info.append("<h5>" + "Netinkamas procesoriaus ventiliatorius" + "<h5>");
+  }
+  if(selected_mobo[5].includes(selected_storage[4])){
+    
+    decision++;
+  }else{
+    info.append("<h5>" + "Netinkamas kietasis diskas" + "<h5>");
+  }
+console.log(decision);
+}
+if(decision==7){
+  info_box.addClass("success");
+  info_box.removeClass("failed");
+  info.append("<h5>" + "Visos dalys suderinamos" + "<h5>")
+  info.append("<h5 class='total-sum'>" + "Bendra suma: " + total_sum.toFixed(2) + "Eurų" + "</h5>");
+  info.append("<h5 class='total-wattage'>" + "Elektros energijos naudojimas: " + total_wattage.toFixed(0) + "W" + "</h5>");
+}
+else{
+  info_box.addClass("failed");
+  info_box.removeClass("success");
+}    
+});
+
+})
+    
+    
+
+
+ 
+
+
+
+
+</script>
+</head>
+<body>
+ <div class="builderis">
+<div class="tab">
+  <button class="tablinks" onclick="opentab(event, 'mobos')">Motinines plokstes</button>
+  <button class="tablinks" onclick="opentab(event, 'cpus')">Procesoriai</button>
+  <button class="tablinks" onclick="opentab(event, 'gpus')">Vaizdo plokstes</button>
+  <button class="tablinks" onclick="opentab(event, 'rams')">Operatyvioji atmintis</button>
+  <button class="tablinks" onclick="opentab(event, 'power_supply')">Maitinimo šaltiniai</button>
+  <button class="tablinks" onclick="opentab(event, 'fans')">Ventiliatoriai</button>
+  <button class="tablinks" onclick="opentab(event, 'hard_disks')">Kietieji diskai</button>
+</div>
+
+<div id="multitable">
+<div id="mobos" class="tabcontent">
+  <table class="table" id="table-1">
+<thead>
+<tr>
+<th class="pic"></th>
+<th scope="col">Pavadinimas</th>
+<th scope="col">Procesoriaus lizdas</th>
+<th scope="col">RAM slotai</th>
+<th scope="col">RAM atminties greitis</th>
+<th scope="col">Plėtotės lizdai</th>
+<th scope="col">Energijos naudojimas(vatais)</th>
+<th scope="col">Kaina(eurais)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="./pics/mobo-1.jpg"></td>
+<td class="pavadinimas">Asus ROG STRIX Z370-E GAMING</td>
+<td>LGA1151</td>
+<td>4</td>
+<td>DDR4</td>
+<td>PCI-E 16x PCI-E 1x SATA M.2</td>
+<td>55</td>
+<td>70.39</td>
+</tr>
+<tr>
+ <td><img src="./pics/mobo-2.jpg" ></td>
+  <td class="pavadinimas">Asus STRIX B350-F GAMING</td>
+  <td>AM4</td>
+  <td>4</td>
+  <td>DDR4</td>
+  <td>PCI-E 16x PCI-E 1x SATA M.2</td>
+  <td>65</td>
+  <td>114.49</td>
+  </tr>
+  <tr>
+    <td><img src="./pics/mobo-3.jpg"></td>
+    <td class="pavadinimas">MSI B350M GAMING PRO</td>
+    <td>AM4</td>
+    <td>2</td>
+    <td>DDR4</td>
+    <td>PCI-E 16x PCI-E 1x SATA M.2</td>
+    <td>38</td>
+    <td>45.17</td>
+    </tr>
+    <tr>
+      <td><img src="./pics/mobo-4.jpg"></td>
+      <td class="pavadinimas">ASRock B450 Steel Legend</td>
+      <td>AM4</td>
+      <td>2</td>
+      <td>DDR4</td>
+      <td>PCI-E 16x PCI-E 1x SATA M.2</td>
+      <td>55</td>
+      <td>68.96</td>
+      </tr>
+      <tr>
+        <td><img src="./pics/mobo-5.jpg"></td>
+        <td class="pavadinimas">ROG STRIX Z390-E GAMING</td>
+        <td>LGA1151</td>
+        <td>4</td>
+        <td>DDR4</td>
+        <td>PCI-E 16x PCI-E 1x SATA M.2</td>
+        <td>62</td>
+        <td>235.00</td>
+        </tr>
+        <tr>
+          <td><img src="./pics/mobo-6.jpg"></td>
+          <td class="pavadinimas">ASRock B365 Pro4</td>
+          <td>LGA1151</td>
+          <td>4</td>
+          <td>DDR4</td>
+          <td>PCI-E 16x PCI-E 1x SATA M.2</td>
+          <td>52</td>
+          <td>99.00</td>
+          </tr>
+          <tr>
+            <td><img src="./pics/mobo-7.jpg"></td>
+            <td class="pavadinimas">MSI A68HM-E33 V2</td>
+            <td>FM2+</td>
+            <td>2</td>
+            <td>DDR3</td>
+            <td>PCI-E 16x PCI-E 1x SATA M.2</td>
+            <td>45</td>
+            <td>49.99</td>
+            </tr>
+            <tr>
+              <td><img src="./pics/mobo-8.jpg"></td>
+              <td class="pavadinimas">Asus B85M-G</td>
+              <td>LGA1150</td>
+              <td>4</td>
+              <td>DDR3</td>
+              <td>PCI-E 16x PCI-E 1x SATA M.2</td>
+              <td>60</td>
+              <td>154.00</td>
+              </tr>
+              <tr>
+                <td><img src="./pics/mobo-9.jpg"></td>
+                <td class="pavadinimas">Asus M5A78L-M PLUS</td>
+                <td>AM3+</td>
+                <td>4</td>
+                <td>DDR3</td>
+                <td>PCI-E 16x PCI-E 1x SATA M.2</td>
+                <td>43</td>
+                <td>134.99</td>
+                </tr>
+                <tr>
+                  <td><img src="./pics/mobo-10.jpg"></td>
+                  <td class="pavadinimas">Asus MAXIMUS VII HERO</td>
+                  <td>LGA1150</td>
+                  <td>4</td>
+                  <td>DDR3</td>
+                  <td>PCI-E 16x PCI-E 1x SATA M.2</td>
+                  <td>75</td>
+                  <td>115.99</td>
+                  </tr>
+</tbody>
+
+  </table>
+</div>
+
+<div id="cpus" class="tabcontent">
+  <table class="table"  id="table-2">
+<thead>
+  <tr>
+    <th></th>
+    <th scope="col">Pavadinimas</th>
+    <th scope="col">Procesoriaus jungtis</th>
+    <th scope="col">Dažnis</th>
+    <th scope="col">Branduolių skaičius</th>
+    <th scope="col">Energijos naudojimas(vatais)</th>
+    <th scope="col">Kaina(eurais)</th>
+    </tr>
+
+</thead>
+<tbody>
+  <tr>
+    <td><img src="./pics/cpu-1.jpg"></td>
+    <td class="pavadinimas">AMD Ryzen 5 3600</td>
+    <td>AM4</td>
+    <td>3.6GHz</td>
+    <td>6</td>
+    <td>75</td>
+    <td>172.39</td>
+    </tr>
+    <tr>
+      <td><img src="./pics/cpu-2.jpg"></td>
+      <td class="pavadinimas">AMD Ryzen 7 3700X</td>
+      <td>AM4</td>
+      <td>3.6GHz</td>
+      <td>8</td>
+      <td>85</td>
+      <td>294.14</td>
+      </tr>
+      <tr>
+        <td><img src="./pics/cpu-3.jpg"></td>
+        <td class="pavadinimas">Intel Core i7-9700K</td>
+        <td >LGA1151</td>
+        <td >3.6GHz</td>
+        <td >8</td>
+        <td>85</td>
+        <td >370.99</td>
+        </tr>
+        <tr>
+          <td><img src="./pics/cpu-4.jpg"></td>
+          <td class="pavadinimas">Intel Core i5-9400F</td>
+          <td >LGA1151</td>
+          <td >2.9GHz</td>
+          <td >6</td>
+          <td>65</td>
+          <td >149.99</td>
+          </tr>
+          <tr>
+            <td><img src="./pics/cpu-5.jpg"></td>
+            <td class="pavadinimas">Intel Core i3-9100F</td>
+            <td >LGA1151</td>
+            <td >3.6GHz</td>
+            <td >4</td>
+            <td>65</td>
+            <td >76.93</td>
+            </tr>
+            <tr>
+              <td><img src="./pics/cpu-6.jpg"></td>
+              <td class="pavadinimas">AMD Ryzen 3 3100</td>
+              <td >AM4</td>
+              <td >3.6GHz</td>
+              <td >4</td>
+              <td>55</td>
+              <td >99.00</td>
+              </tr>
+              <tr>
+                <td><img src="./pics/cpu-7.jpg"></td>
+                <td class="pavadinimas">Intel Core i5-3470</td>
+                <td >LGA1155</td>
+                <td >3.6GHz</td>
+                <td >4</td>
+                <td>75</td>
+                <td >85.14</td>
+                </tr>
+                <tr>
+                  <td><img src="./pics/cpu-8.jpg"></td>
+                  <td class="pavadinimas">AMD FX-6300</td>
+                  <td >AM3+</td>
+                  <td >3.5GHz</td>
+                  <td >6</td>
+                  <td>70</td>
+                  <td >85.99</td>
+                  </tr>
+                  <tr>
+                    <td><img src="./pics/cpu-9.jpg"></td>
+                    <td class="pavadinimas">Intel Core i3-2100</td>
+                    <td >LGA1155</td>
+                    <td >3.1GHz</td>
+                    <td >2</td>
+                    <td>45</td>
+                    <td >24.99</td>
+                    </tr>
+                    <tr>
+                      <td><img src="./pics/cpu-10.jpg"></td>
+                      <td class="pavadinimas">AMD FX-8350</td>
+                      <td >AM3+</td>
+                      <td >4GHz</td>
+                      <td >8</td>
+                      <td>100</td>
+                      <td >140.99</td>
+                      </tr>
+</tbody>
+  </table>
+</div>
+
+<div id="gpus" class="tabcontent">
+  <table class="table"  id="table-3">
+    <thead>
+      <th></th>
+      <th scope="col">Pavadinimas</th>
+      <th scope="col">Atmintis</th>
+      <th scope="col">Dažnis</th>
+      <th scope="col">Sąsaja</th>
+      <th scope="col">Energijos naudojimas(vatais)</th>
+      <th scope="col">Kaina(eurais)</th>
+    </thead>
+<tbody>
+  <tr>
+  <td><img src="./pics/gpu-1.jpg"></td>
+  <td >Gigabyte Radeon RX 5700</td>
+  <td >8 GB</td>
+  <td >1650 MHz</td>
+  <td >PCI-E 16x</td>
+  <td>300</td>
+  <td >409.99</td>
+  </tr>
+  <tr>
+    <td><img src="./pics/gpu-2.jpg"></td>
+    <td >Asus GeForce RTX 2080 Ti</td>
+    <td >11 GB</td>
+    <td >1665 MHz</td>
+    <td >PCI-E 16x</td>
+    <td>350</td>
+    <td >1279.99</td>
+    </tr>
+    <tr>
+      <td><img src="./pics/gpu-3.jpg"></td>
+      <td >XFX Radeon RX 580</td>
+      <td >8 GB</td>
+      <td >1366 MHz</td>
+      <td >PCI-E 16x</td>
+      <td>350</td>
+      <td >170.00</td>
+      </tr>
+      <tr>
+        <td><img src="./pics/gpu-4.jpg"></td>
+        <td >Gigabyte Radeon RX 570</td>
+        <td >4 GB</td>
+        <td >1168 MHz</td>
+        <td >PCI-E 16x</td>
+        <td>300</td>
+        <td >237.99</td>
+        </tr>
+        <tr>
+          <td><img src="./pics/gpu-5.jpg"></td>
+          <td >GeForce GTX 1660</td>
+          <td >6 GB</td>
+          <td >1530 MHz</td>
+          <td >PCI-E 16x</td>
+          <td>400</td>
+          <td >409.99</td>
+          </tr>
+          <tr>
+            <td><img src="./pics/gpu-6.jpg"></td>
+            <td >GeForce GT 710</td>
+            <td >1 GB</td>
+            <td >954 MHz</td>
+            <td >PCI-E 16x</td>
+            <td>240</td>
+            <td >44.99</td>
+            </tr>
+            <tr>
+              <td><img src="./pics/gpu-7.jpg"></td>
+              <td >MSI GeForce GTX 1650</td>
+              <td >4 GB</td>
+              <td >1740 MHz</td>
+              <td >PCI-E 16x</td>
+              <td>250</td>
+              <td >159.99</td>
+              </tr>
+              <tr>
+                <td><img src="./pics/gpu-8.jpg"></td>
+                <td >Asus GeForce GTX 1080 Ti</td>
+                <td >11 GB</td>
+                <td >1493 MHz</td>
+                <td >PCI-E 16x</td>
+                <td>350</td>
+                <td >1299.99</td>
+                </tr>
+                <tr>
+                  <td><img src="./pics/gpu-9.jpg"></td>
+                  <td >Gigabyte GeForce GT 1030</td>
+                  <td >2 GB</td>
+                  <td >1252 MHz</td>
+                  <td >PCI-E 16x</td>
+                  <td>200</td>
+                  <td >79.99</td>
+                  </tr>
+                  <tr>
+                    <td><img src="./pics/gpu-10.jpg"></td>
+                    <td >Zotac GeForce RTX 2060</td>
+                    <td >6 GB</td>
+                    <td >1680 MHz</td>
+                    <td >PCI-E 16x</td>
+                    <td>300</td>
+                    <td >319.99</td>
+                    </tr>
+</tbody>
+  </table>
+</div>
+<div id="rams" class="tabcontent">
+<table class="table" id="table-4">
+<thead>
+<th></th>
+  <th scope="col">Pavadinimas</th>
+  <th scope="col">Atminties talpa(vieneto)</th>
+  <th scope="col">Kiekis</th>
+  <th scope="col">Atminties technologija</th>
+  <th scope="col">Kaina(eurais)</th>
+
+</thead>
+<tbody>
+<tr>
+<td><img src="./pics/ram-1.jpg"></td>
+<td >Corsair Vengeance LPX</td>
+<td >8 GB</td>
+<td >2</td>
+<td >DDR4</td>
+<td >79.45</td>
+</tr>
+<tr>
+  <td><img src="./pics/ram-2.jpg"></td>
+  <td >G.Skill Trident Z Neo</td>
+  <td >16GB</td>
+  <td >2</td>
+  <td >DDR4</td>
+  <td >178.99</td>
+  </tr>
+  <tr>
+    <td><img src="./pics/ram-3.jpg"></td>
+    <td >Team T-FORCE VULCAN Z</td>
+    <td >8GB</td>
+    <td >2</td>
+    <td >DDR4</td>
+    <td >64.23</td>
+    </tr>
+    <tr>
+      <td><img src="./pics/ram-4.jpg"></td>
+      <td >Kingston HyperX Fury Blue</td>
+      <td >4GB</td>
+      <td >2</td>
+      <td >DDR3</td>
+      <td >46.99</td>
+      </tr>
+      <tr>
+        <td><img src="./pics/ram-5.jpg"></td>
+        <td >Corsair Vengeance</td>
+        <td >8GB</td>
+        <td >1</td>
+        <td >DDR4</td>
+        <td >39.99</td>
+        </tr>
+        <tr>
+          <td><img src="./pics/ram-6.jpg"></td>
+          <td >Corsair Vengeance RGB Pro</td>
+          <td >8GB</td>
+          <td >4</td>
+          <td >DDR4</td>
+          <td >220.99</td>
+          </tr>
+          <tr>
+<td><img src="./pics/ram-7.jpg"></td>
+<td>Crucial Ballistix</td>
+<td>8GB</td>
+<td>2</td>
+<td >DDR4</td>
+<td>74.30</td>
+          </tr>
+          <tr>
+            <td><img src="./pics/ram-8.jpg"></td>
+            <td>G.Skill Aegis</td>
+            <td>8GB</td>
+            <td>1</td>
+            <td>DDR4</td>
+            <td>35.99</td>
+          </tr>
+          <tr>
+            <td><img src="./pics/ram-9.jpg"></td>
+            <td>Patriot Viper Elite</td>
+            <td>4GB</td>
+            <td>2</td>
+            <td>DDR4</td>
+            <td>38.99</td>
+          </tr>
+          <tr>
+            <td><img src="./pics/ram-10.jpg"></td>
+            <td>G.Skill Ripjaws V Series</td>
+            <td>16GB</td>
+            <td>4</td>
+            <td>DDR4</td>
+            <td>259.99</td>
+          </tr>
+          
+</tbody>
+</table>
+
+</div>
+<div id="power_supply" class="tabcontent">
+<table class="table" id="table-5">
+<thead>
+  <th></th>
+<th scope="col">Pavadinimas</th>
+<th scope="col">Galingumas(vatais)</th>
+<th scope="col">Kaina(eurais)</th>
+</thead>
+<tbody>
+  <tr>
+    <td><img src="pics/psu-1.jpg"></td>
+<td>Corsair RM (2019)</td>
+<td>750</td>
+<td>125.00</td>
+</tr>
+<tr>
+  <td><img src="pics/psu-2.jpg"></td>
+  <td>CoolMax</td>
+  <td>300</td>
+  <td>28.73</td>
+  </tr>
+  <tr>
+    <td><img src="pics/psu-3.jpg"></td>
+    <td>EVGA SuperNOVA G3</td>
+    <td>750</td>
+    <td>129.99</td>
+    </tr>
+    <tr>
+      <td><img src="pics/psu-4.jpg"></td>
+      <td>Thermaltake Toughpower Grand RGB</td>
+      <td>850</td>
+      <td>129.99</td>
+      </tr>
+      <tr>
+        <td><img src="pics/psu-5.jpg"></td>
+        <td>Corsair RMx White (2018)</td>
+        <td>750</td>
+        <td>144.99</td>
+        </tr>
+        <td><img src="pics/psu-6.jpg"></td>
+        <td>SeaSonic FOCUS Plus</td>
+        <td>750</td>
+        <td>144.99</td>
+        </tr>
+        <td><img src="pics/psu-7.jpg"></td>
+        <td>Corsair RMx</td>
+        <td>1000</td>
+        <td>204.99</td>
+        </tr>
+        <td><img src="pics/psu-8.jpg"></td>
+        <td>Thermaltake Smart Series</td>
+        <td>430</td>
+        <td>39.99</td>
+        </tr>
+        <td><img src="pics/psu-9.jpg"></td>
+        <td>EVGA SuperNOVA T2</td>
+        <td>1600</td>
+        <td>465.94</td>
+        </tr>
+        <td><img src="pics/psu-10.jpg"></td>
+        <td>Silverstone</td>
+        <td>500</td>
+        <td>93.52</td>
+        </tr>
+</tbody>
+
+</table>
+
+
+</div>
+<div id="fans" class="tabcontent">
+<table class="table" id="table-6">
+<thead>
+  <th></th>
+<th scope="col">Pavadinimas</th>
+<th scope="col">Apsukos per minutę</th>
+<th scope="col">Suderinama su procesoriaus lizdais</th>
+<th scope="col">Kaina(eurais)</th>
+
+</thead>
+<tbody>
+<tr>
+  <td><img src="pics/fan-1.jpg"></td>
+<td>Cooler Master Hyper 212 EVO</td>
+<td>600 - 2000</td>
+<td>AM2 AM2+ AM3 AM3+ FM1 FM2 FM2+ AM4</br>LGA775 LGA1150 LGA1151 LGA1155 LGA1156</br> LGA1200 LGA1366 LGA2011</td>
+<td>34,99</td>
+</tr>
+<tr>
+  <td><img src="pics/fan-2.jpg"></td>
+<td>Corsair H100i</td>
+<td>2400</td>
+<td>AM2 AM2+ AM3 AM3+ FM1 FM2 FM2+ AM4</br>LGA775 LGA1150 LGA1151 LGA1155 LGA1156</br> LGA1200 LGA1366 LGA2011</td>
+<td>139.99</td>
+</tr>
+<tr>
+  <td><img src="pics/fan-3.jpg"></td>
+<td>AMD Wraith Max</td>
+<td>700 - 3000</td>
+<td>AM2 AM2+ AM3 AM3+ FM1 FM2 FM2+ AM4</td>
+<td>89,99</td>
+</tr>
+<tr>
+  <td><img src="pics/fan-4.jpg"></td>
+<td>NZXT Kraken X63</td>
+<td>500 - 2000</td>
+<td>LGA775 LGA1150 LGA1151 LGA1155 LGA1156</br> LGA1200 LGA1366 LGA2011</td>
+<td>149,99</td>
+</tr>
+<tr>
+  <td><img src="pics/fan-5.jpg"></td>
+<td>Noctua NH-L9a</td>
+<td>600 - 2500</td>
+<td>AM4</td>
+<td>30,99</td>
+</tr>
+<tr>
+  <td><img src="pics/fan-6.jpg"></td>
+<td>ARCTIC Freezer 34</td>
+<td>200 - 2100</td>
+<td>AM2 AM2+ AM3 AM3+ FM1 FM2 FM2+ AM4</br>LGA775 LGA1150 LGA1151 LGA1155 LGA1156</br> LGA1200 LGA1366 LGA2011</td>
+<td>57.45</td>
+</tr>
+<tr>
+  <td><img src="pics/fan-7.jpg"></td>
+<td>ARCTIC Alpine 64 GT</td>
+<td>500 - 2000</td>
+<td>AM2 AM2+ AM3 AM3+ FM1 FM2 FM2+ AM4</td>
+<td>9,99</td>
+</tr>
+<tr>
+  <td><img src="pics/fan-8.jpg"></td>
+<td>Cooler Master MasterAir</td>
+<td>650 - 2000</td>
+<td>AM2 AM2+ AM3 AM3+ FM1 FM2 FM2+ AM4</br>LGA775 LGA1150 LGA1151 LGA1155 LGA1156</br> LGA1200 LGA1366 LGA2011</td>
+<td>49,99</td>
+</tr>
+<tr>
+  <td><img src="pics/fan-9.jpg"></td>
+<td>Corsair H90</td>
+<td>1500</td>
+<td>AM2 AM2+ AM3 AM3+ FM1 FM2 FM2+ AM4</br>LGA1150 LGA1151 LGA1155</br> LGA1200 LGA1366 LGA2011</td>
+<td>74,99</td>
+</tr>
+<tr>
+  <td><img src="pics/fan-10.jpg"></td>
+<td>Cooler Master Hyper 212 Plus</td>
+<td>600 - 2000</td>
+<td>AM2 AM2+ AM3 AM3+ FM1 FM2 FM2+ AM4</br>LGA775 LGA1150 LGA1151 LGA1155 LGA1156</br> LGA1200 LGA1366 LGA2011</td>
+<td>59,99</td>
+</tr>
+
+
+</tbody>
+
+</table>
+
+
+</div>
+<div id="hard_disks" class="tabcontent">
+<table class="table" id="table-7">
+<thead>
+  <th></th>
+<th scope="col">Pavadinimas</th>
+<th scope="col">Talpa</th>
+<th scope="col">Tipas</th>
+<th scope="col">Sąsaja</th>
+<th scope="col">Kaina</th>
+</thead>
+<tbody>
+  <tr>
+    <td><img src="pics/storage-1.jpg"></td>
+<td>Samsung 970 Evo</td>
+<td>1TB</td>
+<td>SSD</td>
+<td>M.2</td>
+<td>179.99</td>
+</tr>
+<tr>
+  <td><img src="pics/storage-2.jpg"></td>
+  <td>Seagate Surveillance</td>
+  <td>2TB</td>
+  <td>HDD</td>
+  <td>SATA</td>
+  <td>69.99</td>
+  </tr>
+  <tr>
+    <td><img src="pics/storage-3.jpg"></td>
+    <td>Seagate Desktop</td>
+    <td>4TB</td>
+    <td>HDD</td>
+    <td>SATA</td>
+    <td>399.99</td>
+    </tr>
+    <tr>
+      <td><img src="pics/storage-4.jpg"></td>
+      <td>Seagate Barracuda</td>
+      <td>1.5TB</td>
+      <td>HDD</td>
+      <td>SATA</td>
+      <td>84.45</td>
+      </tr>
+      <tr>
+        <td><img src="pics/storage-5.jpg"></td>
+        <td>Western Digital Green</td>
+        <td>2TB</td>
+        <td>HDD</td>
+        <td>SATA</td>
+        <td>125.99</td>
+        </tr>
+        <tr>
+        <td><img src="pics/storage-6.jpg"></td>
+        <td>Western Digital Blue SN550</td>
+        <td>1TB</td>
+        <td>SSD</td>
+        <td>M.2</td>
+        <td>129.99</td>
+        </tr>
+        <tr>
+          <td><img src="pics/storage-7.jpg"></td>
+          <td>ADATA XPG SX8200 Pro</td>
+          <td>1TB</td>
+          <td>SSD</td>
+          <td>M.2</td>
+          <td>149.74</td>
+          </tr>
+          <tr>
+            <td><img src="pics/storage-8.jpg"></td>
+            <td>SanDisk SSD PLUS</td>
+            <td>240GB</td>
+            <td>SSD</td>
+            <td>SATA</td>
+            <td>45.32</td>
+            </tr>
+            <tr>
+              <td><img src="pics/storage-9.jpg"></td>
+              <td>Samsung 960 Pro</td>
+              <td>2TB</td>
+              <td>SSD</td>
+              <td>M.2</td>
+              <td>1999.99</td>
+              </tr>
+              <tr>
+                <td><img src="pics/storage-10.jpg"></td>
+                <td>Team MS30</td>
+                <td>256GB</td>
+                <td>SSD</td>
+                <td>M.2</td>
+                <td>31.99</td>
+                </tr>
+</tbody>
+</table>
+</div>
+<div class="container-fluid" id="pasirinktos_dalys">
+  <div class="row">
+    <div class="col-xl-6">
+<h6 id="h6-txt" class="text-center">Pasirinkti komponentai</h6>
+<ul>
+<li id="selection-mobo">Pasirinkta motininė plokštė: </li>
+<li id="selection-cpu">Pasirinktas procesorius: </li>
+<li id="selection-gpu">Pasirinkta vaizdo plokštė: </li>
+<li id="selection-ram">Pasirinkta operatyvioji atmintis: </li>
+<li id="selection-psu">Pasirinktas maitinimo blokas: </li>
+<li id="selection-fan">Pasirinktas ventiliatorius: </li>
+<li id="selection-storage">Pasirinktas kietasis diskas:</li>
+
+</ul>
+</div>
+<div class="col-xl-6" id="checked-info">
+  <button class="btn-light" id="check-build">Tikrinti</button>
+  <h6 id="h6-txt" class="text-center">Informacija</h6>
+  <div id="information"></div>
+</div>
+</div>
+
+
+
+
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

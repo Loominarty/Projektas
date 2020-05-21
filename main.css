@@ -443,21 +443,80 @@ table tbody tr:hover{
   
   cursor:pointer;
 }
-.selected-1,.selected-2,.selected-3,.selected-4,.selected-5,.selected-6,.selected-7{
-  background-color:green;
+.selected-1{
+  background-image: linear-gradient(to right, #870000 0%, #190A05 51%, #870000 100%)
 }
-#pasirinktos_dalys{
-background-color:black;
 
+#pasirinktos_dalys{
+background-color:#121212;
+border-width:1px;
+border-color:white;
+border-style:solid;
+transition:box-shadow 0,5s;
 }
 #pasirinktos_dalys ul li{
   color:white;
 }
 #check-build{
-  position:relative;
-  left:97%;
+  box-sizing: border-box;
+  position:absolute;
+  right:0;
+  bottom:0;
   border-radius:10px;
 }
 #h6-txt{
   color:white;
 }
+h5{
+  color:white;
+}
+.tab{
+  background-color:#121212;
+  border-width:0px;
+}
+.tablinks{
+  color:white;
+  border-width:1px;
+  border-style:solid;
+  border-color:white;
+}
+.tablinks:hover{
+color:black;
+background-color:white;
+}
+.tablinks.active{
+  color:black;
+  background:white;
+  }
+  tr, td, th{
+    color:white;
+    text-align:center;
+    
+  }
+  
+  .table, .tabcontent{
+    background-color:#121212;
+    
+  }
+#checked-info{
+  border-left-width: 1px;
+  border-left-color:white;
+  border-left-style:solid;
+  text-align:center;
+}
+h5{
+  font-weight:normal;
+}
+.failed{
+  -webkit-box-shadow:inset 0px 0px 155px -29px rgba(239,1,7,1);
+-moz-box-shadow:inset 0px 0px 155px -29px rgba(239,1,7,1);
+box-shadow:inset 0px 0px 47px -8px rgba(239,1,7,1);
+transition: box-shadow 0.3s ease-in-out;
+}
+.success{
+  -webkit-box-shadow: inset 0px 0px 113px 2px rgba(0,255,0,1);
+-moz-box-shadow: inset 0px 0px 113px 2px rgba(0,255,0,1);
+box-shadow: inset 0px 0px 47px -8px rgba(0,255,0,1);
+transition: box-shadow 0.3s ease-in-out;
+}
+
